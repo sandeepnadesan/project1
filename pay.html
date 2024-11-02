@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Crew Dashboard</title>
+    <style>
+        body {
+            background-color: #1E1E2E;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background-color: #2B2B2B;
+            border-radius: 8px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .profile-icon {
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            background-color: #4E4E4E;
+            margin: 0 auto;
+        }
+        h2 {
+            margin: 10px 0;
+        }
+        .link {
+            color: #00BFFF;
+            text-decoration: none;
+        }
+        .token-info {
+            background-color: #007bff;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .send-tokens {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .send-tokens:hover {
+            background-color: #218838;
+        }
+        .referral-status {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .referral-status h3 {
+            margin: 10px 0;
+        }
+        .status-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .status-table th, .status-table td {
+            border: 1px solid #444;
+            padding: 8px;
+        }
+        .status-table th {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="profile-icon"></div>
+        <h2>CLIMATE CREW</h2>
+        <p>0xf98da666ddb9768103cc20dea1445083b74d32c</p>
+        <p>ID 3293370984</p>
+        <p>Personal link:</p>
+        <a href="http://localhost:3000/dashboard" class="link">http://localhost:3000/dashboard</a>
+        <div class="token-info">
+            <p>TEMZ/BNB</p>
+            <p>60 USD</p>
+        </div>
+        <button class="send-tokens">Send Tokens</button>
+        <div class="referral-status">
+            <h3>Referral Status</h3>
+            <table class="status-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>RandomId</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Random Name</td>
+                        <td>RandomId123</td>
+                        <td>Active</td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

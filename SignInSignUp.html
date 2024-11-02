@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Sign Up - CryptoCoin</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
+        <a href="index.html" class="navbar-brand d-flex align-items-center">
+            <h2 class="m-0 text-primary"><img class="img-fluid me-2" src="img/icon-1.png" alt="" style="width: 45px;">CryptoCoin</h2>
+        </a>
+        <div class="collapse navbar-collapse">
+            <div class="navbar-nav ms-auto">
+                <a href="index.html" class="nav-item nav-link">Home</a>
+                <a href="about.html" class="nav-item nav-link">About</a>
+                <a href="TechStack.html" class="nav-item nav-link">Tech Stack</a>
+                <a href="MissionVision.html" class="nav-item nav-link">Mission & Vision</a>
+                <a href="SignIn.html" class="nav-item nav-link">Sign In</a>
+                <a href="SignInSignUp.html" class="nav-item nav-link active">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h2>Sign Up</h2>
+        <form id="signUpForm">
+            <div class="mb-3">
+                <label for="registerEmail" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="registerEmail" required>
+            </div>
+            <div class="mb-3">
+                <label for="registerPassword" class="form-label">Password</label>
+                <input type="password" class="form-control" id="registerPassword" required minlength="6">
+            </div>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('signUpForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+
+            try {
+                const response = await fetch('http://localhost:5000/api/signup', { // Update URL as needed
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    alert('Registration successful');
+                    window.location.href = 'SignIn.html'; // Redirect to sign-in page
+                } else {
+                    alert('Registration failed: ' + (data.message || 'Unknown error'));
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>

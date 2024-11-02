@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Sign In - CryptoCoin</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
+        <a href="index.html" class="navbar-brand d-flex align-items-center">
+            <h2 class="m-0 text-primary"><img class="img-fluid me-2" src="img/icon-1.png" alt=""
+                    style="width: 45px;">CryptoCoin</h2>
+        </a>
+        <div class="collapse navbar-collapse">
+            <div class="navbar-nav ms-auto">
+                <a href="index.html" class="nav-item nav-link">Home</a>
+                <a href="about.html" class="nav-item nav-link">About</a>
+                <a href="TechStack.html" class="nav-item nav-link">Tech Stack</a>
+                <a href="MissionVision.html" class="nav-item nav-link">Mission & Vision</a>
+                <a href="SignIn.html" class="nav-item nav-link active">Sign In</a>
+                <a href="SignInSignUp.html" class="nav-item nav-link">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h2>Sign In</h2>
+        <form id="signInForm">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign In</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('signInForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Send data to the server
+            fetch('https://your-backend-api.com/api/signin', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Sign in successful');
+                    window.location.href = 'index.html'; // Redirect to homepage
+                } else {
+                    alert('Sign in failed: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
+        });
+    </script>
+</body>
+
+</html>
